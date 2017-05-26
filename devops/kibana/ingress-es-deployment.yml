@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: kibana-es-ingress-with-auth
+  name: ingress-es
   namespace: elk
 spec:
   replicas: 1
@@ -9,10 +9,10 @@ spec:
   template:
     metadata:
       labels:
-        app: kibana-es-ingress-with-auth
+        app: ingress-es
     spec:
       containers:
-      - name: kibana-es-ingress-with-auth
+      - name: ingress-es
         image: gcr.io/google_containers/nginx-ingress-controller:0.8.3
         imagePullPolicy: Always
         ports:
