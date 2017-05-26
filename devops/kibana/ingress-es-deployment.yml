@@ -27,4 +27,5 @@ spec:
         args:
           - /nginx-ingress-controller
           - --default-backend-service=elk/default-http-backend
+          #- --default-ssl-certificate=elk/kibana-cert
           - --watch-namespace=elk

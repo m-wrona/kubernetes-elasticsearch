@@ -4,6 +4,16 @@ Elasticsearch & Kibana configuration for Kubernetes.
 
 ***Note: All images have been customized based on Kubernetes source code.***
 
+Repository contains:
+
+* Ingress with `basic auth`. SSL support can be enabled by providing cert.
+
+* Kibana
+
+* ES & curator (for cleaning old logs)
+
+* Fluentd (for pushing logs from Kubernetes to ES)
+
 # Dockers
 
 Images:
@@ -36,7 +46,17 @@ TODO: create uber script for deployment
 
 # Local development
 
-## Access Elasticsearch & Kibana
+Prerequisite:
+
+* ![Mini Kube](https://github.com/kubernetes/minikube)
+
+In order to access Kibana using `minikube` execute:
+
+```
+minikube service -n elk ingress-es
+```
+
+# Access Elasticsearch & Kibana
 
 1) Connect to Kubernetes cluster
 
@@ -49,3 +69,5 @@ kube-ctl proxy
 ```
 kube-ctl cluster-info
 ```
+
+3) Basic auth credentials `admin:admin`
