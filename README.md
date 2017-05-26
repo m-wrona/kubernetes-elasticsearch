@@ -48,7 +48,7 @@ TODO: create uber script for deployment
 
 Prerequisite:
 
-* ![Mini Kube](https://github.com/kubernetes/minikube)
+* [Mini Kube](https://github.com/kubernetes/minikube)
 
 In order to access Kibana using `minikube` execute:
 
