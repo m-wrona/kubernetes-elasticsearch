@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: curator
+  namespace: elk
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: curator
+    spec:
+      terminationGracePeriodSeconds: 60
+      containers:
+      - name: default-http-backend
+        image: smtdockerregistry-kone.azurecr.io/curator:1.0.2
+        resources:
+          limits:
+            cpu: 100m
+            memory: 200Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+        env:
+          - name: "CRON"
+            value: "0  *  *  *  *"

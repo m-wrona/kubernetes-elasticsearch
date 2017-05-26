@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: kibana-es-ingress-with-auth
+  namespace: elk
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  template:
+    metadata:
+      labels:
+        app: kibana-es-ingress-with-auth
+    spec:
+      containers:
+      - name: kibana-es-ingress-with-auth
+        image: gcr.io/google_containers/nginx-ingress-controller:0.8.3
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 5601
+        resources:
+          limits:
+            memory: 150Mi
+            cpu: 100m
+          requests:
+            memory: 150Mi
+            cpu: 100m
+        args:
+          - /nginx-ingress-controller
+          - --default-backend-service=elk/default-http-backend
+          - --watch-namespace=elk

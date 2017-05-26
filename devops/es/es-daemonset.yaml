@@ -1,0 +1,46 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: elasticsearch-logging-v1
+  namespace: elk
+  labels:
+    k8s-app: elasticsearch-logging
+    version: v1
+    kubernetes.io/cluster-service: "true"
+spec:
+  template:
+    metadata:
+      labels:
+        k8s-app: elasticsearch-logging
+        version: v1
+        kubernetes.io/cluster-service: "true"
+    spec:
+      nodeSelector:
+        es: "true"
+      containers:
+      - image: mwrona/kubernetes-elasticsearch/elastic:2.4.1-13
+        name: elasticsearch-logging
+        securityContext:
+          privileged: true
+        resources:
+          # need more cpu upon initialization, therefore burstable class
+          limits:
+            memory: 5Gi
+            cpu: 800m
+          requests:
+            memory: 5Gi
+            cpu: 800m
+        ports:
+        - containerPort: 9200
+          name: db
+          protocol: TCP
+        - containerPort: 9300
+          name: transport
+          protocol: TCP
+        volumeMounts:
+        - name: es-persistent-storage
+          mountPath: /data
+      volumes:
+      - name: es-persistent-storage
+        hostPath:
+          path: /elk

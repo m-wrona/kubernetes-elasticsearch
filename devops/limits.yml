@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: elk-limits
+  namespace: elk
+spec:
+  hard:
+    cpu: "5"
+    memory: 30Gi
+    resourcequotas: "1"

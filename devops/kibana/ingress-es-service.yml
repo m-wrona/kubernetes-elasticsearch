@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ingress-es
+  namespace: elk
+  labels:
+    app: ingress-es
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+    name : http
+  - port: 443
+    protocol: TCP
+    targetPort: 443
+    name : https
+  selector:
+    app: ingress-es
+  type: LoadBalancer
