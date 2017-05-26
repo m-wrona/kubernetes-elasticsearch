@@ -13,7 +13,7 @@ spec:
       terminationGracePeriodSeconds: 60
       containers:
       - name: default-http-backend
-        image: smtdockerregistry-kone.azurecr.io/curator:1.0.2
+        image: mwrona/kubernetes-es-curator:1.0.2
         resources:
           limits:
             cpu: 100m

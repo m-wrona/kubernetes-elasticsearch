@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: fluentd-elasticsearch
-        image: mwrona/kubernetes-elasticsearch/fluentd-es:1.11
+        image: mwrona/kubernetes-es-fluentd:1.11
         resources:
           limits:
             memory: 400Mi

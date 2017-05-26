@@ -2,11 +2,11 @@
 
 # The current value of the tag to be used for building and
 # pushing an image to gcr.io
-IMAGE = curator
+IMAGE = kubernetes-es-curator
 TAG = 1.0.4
 
 build:
-	docker push mwrona/kubernetes-elasticsearch/$(IMAGE):$(TAG) .
+	docker build -t mwrona/$(IMAGE):$(TAG) .
 
 push:
-	docker push mwrona/kubernetes-elasticsearch/$(IMAGE):$(TAG)
+	docker push mwrona/$(IMAGE):$(TAG)

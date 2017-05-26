@@ -18,7 +18,7 @@ spec:
       nodeSelector:
         es: "true"
       containers:
-      - image: mwrona/kubernetes-elasticsearch/elastic:2.4.1-13
+      - image: mwrona/kubernetes-elasticsearch:2.4.1-13
         name: elasticsearch-logging
         securityContext:
           privileged: true

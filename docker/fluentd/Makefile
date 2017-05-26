@@ -1,10 +1,10 @@
 .PHONY:	build push
 
-IMAGE = fluentd-es
+IMAGE = kubernetes-es-fluentd
 TAG = 1.11
 
 build:
-	docker build -t mwrona/kubernetes-elasticsearch/$(IMAGE):$(TAG) .
+	docker build -t mwrona/$(IMAGE):$(TAG) .
 
 push:
-	docker push mwrona/kubernetes-elasticsearch/$(IMAGE):$(TAG)
+	docker push mwrona/$(IMAGE):$(TAG)
